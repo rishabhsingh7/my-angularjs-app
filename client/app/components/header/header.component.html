@@ -1,4 +1,14 @@
-<div>
-    <a ui-sref="app.home">Home</a>
-    <a ui-sref="app.about">About</a>
-</div>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">AngularJS</a>
+    
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" ng-class="{active: $ctrl.isActive('app.home')}">
+            <a class="nav-link" ui-sref="app.home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" ng-class="{active: $ctrl.isActive('app.about')}">
+            <a class="nav-link" ui-sref="app.about">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
