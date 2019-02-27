@@ -14,6 +14,10 @@ function routesConfig($urlRouterProvider, $stateProvider) {
     .state('app.about', {
         url: '/about',
         component: 'about'
+    })
+    .state('app.posts', {
+        url: '/posts',
+        component: 'posts'
     });
 }
 

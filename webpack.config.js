@@ -33,7 +33,25 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
-            }
+            },
+            {
+				test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+                use: {
+                    loader: 'url-loader?limit=10000',
+                    options: {
+                        name: './fonts/[name].[ext]'
+                    }
+                }
+            },
+            {
+                test: /\.(eot|ttf)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: './fonts/[name].[ext]'
+                    }
+                }
+			}
         ]
     },
     
