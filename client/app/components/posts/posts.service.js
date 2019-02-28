@@ -6,10 +6,11 @@ class PostsService {
         this.$http = $http;
     }
 
-    getPosts() {
+    getPosts(userId) {
         this.$log.log('Getting Posts..');
-        return this.$http.get('https://jsonplaceholder.typicode.com/posts')
-            .then(res => res.data);
+        return this.$http.get('https://jsonplaceholder.typicode.com/posts', {
+            params: {userId}
+        }).then(res => res.data);
     }
 
 }

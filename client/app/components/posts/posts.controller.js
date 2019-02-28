@@ -5,13 +5,12 @@ class PostsCtrl {
         $log.log('Inside Posts Controller');
         this.$log = $log
         this.postsService = postsService;
-        this.getPosts();
         this.numPerPage = 10;
         this.currentPage = 1;
     }
 
-    getPosts() {
-        this.postsService.getPosts()
+    getPosts(userId) {
+        this.postsService.getPosts(userId)
             .then(res => {
                 this.posts = res;
                 this.totalPosts = this.posts.length;

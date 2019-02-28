@@ -1,10 +1,21 @@
-<uib-accordion>
-    <div uib-accordion-group class="panel-default" heading="{{post.title}}" ng-repeat="post in $ctrl.slicedPosts">
-        {{post.body}}
-    </div>
-</uib-accordion>
+<div class="row">
+    <form class="form-inline">
+        <input type="number" class="form-control" placeholder="UserId" ng-model="userId">
+        <button class="btn btn-primary" type="submit" ng-click="$ctrl.getPosts(userId)">Get Posts</button>
+    </form>
+</div>
+<br />
 
-<div class="posts-pagination">
-    <pre>{{$ctrl.begin + 1}} to {{$ctrl.end}} of {{$ctrl.totalPosts}}</pre>
-    <ul uib-pagination total-items="$ctrl.totalPosts" items-per-page="$ctrl.numPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.pageChanged()"></ul>
+<div ng-show="$ctrl.posts">
+    <uib-accordion>
+        <div uib-accordion-group class="panel-default" heading="{{post.title}}" ng-repeat="post in $ctrl.slicedPosts">
+            <p>UserId: {{post.userId}}</p>
+            {{post.body}}
+        </div>
+    </uib-accordion>
+
+    <div class="posts-pagination">
+        <pre>{{$ctrl.begin + 1}} to {{$ctrl.end}} of {{$ctrl.totalPosts}}</pre>
+        <ul uib-pagination total-items="$ctrl.totalPosts" items-per-page="$ctrl.numPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.pageChanged()"></ul>
+    </div>
 </div>
