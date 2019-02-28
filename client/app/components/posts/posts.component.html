@@ -5,6 +5,6 @@
 </uib-accordion>
 
 <div class="posts-pagination">
-    <pre>{{$ctrl.begin + 1}} to {{$ctrl.end}} of {{$ctrl.posts.length}}</pre>
-    <ul uib-pagination total-items="$ctrl.posts.length" items-per-page="$ctrl.numPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.pageChanged()"></ul>
+    <pre>{{$ctrl.begin + 1}} to {{$ctrl.end}} of {{$ctrl.totalPosts}}</pre>
+    <ul uib-pagination total-items="$ctrl.totalPosts" items-per-page="$ctrl.numPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.pageChanged()"></ul>
 </div>

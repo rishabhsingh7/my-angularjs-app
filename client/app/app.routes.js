@@ -18,6 +18,10 @@ function routesConfig($urlRouterProvider, $stateProvider) {
     .state('app.posts', {
         url: '/posts',
         component: 'posts'
+    })
+    .state('app.comments', {
+        url: '/comments',
+        component: 'comments'
     });
 }
 

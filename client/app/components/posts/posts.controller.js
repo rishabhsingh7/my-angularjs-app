@@ -1,20 +1,21 @@
 class PostsCtrl {
-    constructor($log, PostsService) {
+    constructor($log, postsService) {
         'ngInject';
 
         $log.log('Inside Posts Controller');
         this.$log = $log
-        this.PostsService = PostsService;
+        this.postsService = postsService;
         this.getPosts();
         this.numPerPage = 10;
         this.currentPage = 1;
     }
 
     getPosts() {
-        this.PostsService.getPosts()
+        this.postsService.getPosts()
             .then(res => {
-                this.$log.log(`${res.length} posts fetched.`);
                 this.posts = res;
+                this.totalPosts = this.posts.length;
+                this.$log.log(`${this.totalPosts} posts fetched.`);
                 this.pageChanged();
             },
             err => {

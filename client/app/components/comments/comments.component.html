@@ -1,0 +1,21 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody class="comments-table-body">
+        <tr ng-repeat="comment in $ctrl.slicedComments" ng-click="$ctrl.openComment(comment)">
+            <th scope="row">{{comment.id}}</th>
+            <td>{{comment.name}}</td>
+            <td>{{comment.email}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="comments-pagination">
+    <pre>{{$ctrl.begin + 1}} to {{$ctrl.end}} of {{$ctrl.totalComments}}</pre>
+    <ul uib-pagination total-items="$ctrl.totalComments" items-per-page="$ctrl.numPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.pageChanged()"></ul>
+</div>

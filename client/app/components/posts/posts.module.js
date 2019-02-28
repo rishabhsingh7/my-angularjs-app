@@ -8,6 +8,6 @@ import PostsService from './posts.service';
 
 let PostsModule = angular.module('posts', [accordion, pagination])
     .component('posts', PostsComponent)
-    .service('PostsService', PostsService);
+    .service('postsService', PostsService);
 
 export default PostsModule;
