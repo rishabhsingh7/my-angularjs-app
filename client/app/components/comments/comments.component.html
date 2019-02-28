@@ -1,3 +1,11 @@
+<div class="row">
+    <form class="form-inline">
+        <input type="number" class="form-control" placeholder="Page" ng-model="page">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.gotoPage(page)">Go</button>
+    </form>
+</div>
+<br />
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -17,5 +25,5 @@
 
 <div class="comments-pagination">
     <pre>{{$ctrl.begin + 1}} to {{$ctrl.end}} of {{$ctrl.totalComments}}</pre>
-    <ul uib-pagination total-items="$ctrl.totalComments" items-per-page="$ctrl.numPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.pageChanged()"></ul>
+    <ul uib-pagination total-items="$ctrl.totalComments" items-per-page="$ctrl.numPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.gotoPage($ctrl.currentPage)"></ul>
 </div>

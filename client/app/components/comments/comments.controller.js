@@ -1,16 +1,18 @@
 import modalTemplate from './comments.modal.html';
 
 class CommentsCtrl {
-    constructor($log, $uibModal, commentsService) {
+    constructor($log, $uibModal, $stateParams, $state, commentsService) {
         'ngInject';
 
         $log.log('Inside Comments Controller');
         this.$log = $log;
         this.$uibModal = $uibModal;
+        this.$state = $state;
         this.commentsService = commentsService;
         this.comments = [];
         this.numPerPage = 50;
-        this.currentPage = 1;
+        this.$stateParams = $stateParams;
+        $log.info(`Current page: ${this.currentPage}`);
         this.getComments();
     }
 
@@ -20,6 +22,7 @@ class CommentsCtrl {
                 this.comments = res;
                 this.totalComments = this.comments.length;
                 this.$log.log(`${this.totalComments} comments fetched`);
+                this.currentPage = this.$stateParams.page;
                 this.pageChanged();
             }, err => {
                 this.$log.error(err);
@@ -30,6 +33,11 @@ class CommentsCtrl {
         this.begin = (this.currentPage - 1) * this.numPerPage;
         this.end = this.begin + this.numPerPage;
         this.slicedComments = this.comments.slice(this.begin, this.end);
+    }
+
+    gotoPage(page) {
+        this.$log.log(`Go to page ${page}`);
+        this.$state.go('.', {page: page});
     }
 
     openComment(comment) {

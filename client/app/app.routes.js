@@ -20,8 +20,14 @@ function routesConfig($urlRouterProvider, $stateProvider) {
         component: 'posts'
     })
     .state('app.comments', {
-        url: '/comments',
-        component: 'comments'
+        url: '/comments?page',
+        component: 'comments',
+        params: {
+            page: {
+                value: '1',
+                squash: true
+            }
+        }
     });
 }
 
