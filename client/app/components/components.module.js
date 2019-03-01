@@ -6,6 +6,7 @@ import HomeModule from './home/home.module';
 import AboutModule from './about/about.module';
 import PostsModule from './posts/posts.module';
 import CommentsModule from './comments/comments.module';
+import CommonModule from './common/common.module';
 
 let ComponentsModule = angular.module('app.components', [
     HeaderModule.name,
@@ -13,7 +14,8 @@ let ComponentsModule = angular.module('app.components', [
     HomeModule.name,
     AboutModule.name,
     PostsModule.name,
-    CommentsModule.name
+    CommentsModule.name,
+    CommonModule.name
 ]);
 
 export default ComponentsModule;
