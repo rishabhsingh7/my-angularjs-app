@@ -1,0 +1,6 @@
+<div>
+    <input type="text" class="form-control input-lg js-tag2-input" ng-model="vm.tagInput">
+</div>
+<div class="tags2-button" ng-repeat="tag in vm.tags">
+    <button type="button" class="btn btn-info">{{tag.tag}}&nbsp;<span class="glyphicon glyphicon-remove" ng-click="vm.removeTag(tag)"></span></button>
+</div>
