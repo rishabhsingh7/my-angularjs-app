@@ -1,13 +1,16 @@
+import _ from 'lodash';
+
 import modalTemplate from './comments.modal.html';
 
 class CommentsCtrl {
-    constructor($log, $uibModal, $stateParams, $state, commentsService) {
+    constructor($log, $uibModal, $stateParams, $state, $filter, commentsService) {
         'ngInject';
 
         $log.log('Inside Comments Controller');
         this.$log = $log;
         this.$uibModal = $uibModal;
         this.$state = $state;
+        this.$filter = $filter;
         this.commentsService = commentsService;
         this.comments = [];
         this.numPerPage = 50;
@@ -23,16 +26,16 @@ class CommentsCtrl {
                 this.totalComments = this.comments.length;
                 this.$log.log(`${this.totalComments} comments fetched`);
                 this.currentPage = this.$stateParams.page;
-                this.pageChanged();
+                this.pageChanged(this.comments);
             }, err => {
                 this.$log.error(err);
             });
     }
 
-    pageChanged() {
+    pageChanged(comments) {
         this.begin = (this.currentPage - 1) * this.numPerPage;
         this.end = this.begin + this.numPerPage;
-        this.slicedComments = this.comments.slice(this.begin, this.end);
+        this.slicedComments = comments.slice(this.begin, this.end);
     }
 
     gotoPage(page) {
@@ -57,6 +60,12 @@ class CommentsCtrl {
           modalInstance.result.then(() => {}, () => {
               this.$log.log('Modal closed');
           });
+    }
+
+    filter(filterText) {
+        let filteredComments = this.$filter('filter')(this.comments, filterText);
+        this.totalComments = filteredComments.length;
+        this.pageChanged(filteredComments);
     }
 }
 

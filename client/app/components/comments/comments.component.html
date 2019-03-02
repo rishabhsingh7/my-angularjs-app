@@ -2,6 +2,9 @@
     <form class="form-inline">
         <input type="number" class="form-control" placeholder="Page" ng-model="page">
         <button class="btn btn-primary" type="button" ng-click="$ctrl.gotoPage(page)">Go</button>
+        <div class="pull-right">
+            <input type="text" class="form-control" placeholder="Filter" ng-model="filterText" ng-change="$ctrl.filter(filterText)">
+        </div>
     </form>
 </div>
 <br />
@@ -24,6 +27,6 @@
 </table>
 
 <div class="comments-pagination">
-    <pre>{{$ctrl.begin + 1}} to {{$ctrl.end}} of {{$ctrl.totalComments}}</pre>
+    <pre>{{$ctrl.begin + 1}} to {{$ctrl.totalComments < $ctrl.end ? $ctrl.totalComments : $ctrl.end}} of {{$ctrl.totalComments}}</pre>
     <ul uib-pagination total-items="$ctrl.totalComments" items-per-page="$ctrl.numPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.gotoPage($ctrl.currentPage)"></ul>
 </div>
